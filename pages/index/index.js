@@ -46,6 +46,17 @@ Page({
     })();
     init();
  
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.autoplay = true;
+    innerAudioContext.src = 'http://fs.w.kugou.com/201812231746/0d50121f1a9d975b15ba4335a7920e1b/G063/M05/0D/03/H5QEAFbNNoWAWlz8ADi_lVSx8Ls270.mp3';
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放');
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg);
+      console.log(res);
+    })
+
     function init() {
       createCanvas();
       // 小屏幕时延长添加雪花时间，避免屏幕上出现太多的雪花

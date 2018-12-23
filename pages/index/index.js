@@ -2,6 +2,27 @@
 //获取应用实例
 const app = getApp()
 
+// 存储所有的雪花
+const snows = [];
+  
+// 下落的加速度
+const G = 0.01;
+
+const fps = 60;
+
+// 速度上限，避免速度过快
+const SPEED_LIMIT_X = 1;
+const SPEED_LIMIT_Y = 1;
+
+const W = wx.getSystemInfoSync().windowWidth;
+const H = wx.getSystemInfoSync().windowHeight;
+
+// const snowImage = './img/snow.png';
+const snowImage = './img/white-snowflake.png';
+// const imgSrc = './img/snow.png';
+
+const innerAudioContext = wx.createInnerAudioContext();
+
 Page({
   data: {
     canvasHeight: 0
@@ -10,23 +31,6 @@ Page({
   // bindViewTap: function() {
   // },
   onLoad: function () {
-    // 存储所有的雪花
-    const snows = [];
-  
-    // 下落的加速度
-    const G = 0.01;
-  
-    const fps = 30;
-  
-    // 速度上限，避免速度过快
-    const SPEED_LIMIT_X = 1;
-    const SPEED_LIMIT_Y = 1;
-  
-    const W = wx.getSystemInfoSync().windowWidth;
-    const H = wx.getSystemInfoSync().windowHeight;
-    this.setData({
-      canvasHeight: H
-    })
   
     let tickCount = 150;
     let ticker = 0;
@@ -35,10 +39,6 @@ Page({
   
     // let canvas = null;
     let ctx = null;
-  
-    // let snowImage = './img/snow.png';
-    let snowImage = './img/white-snowflake.png';
-    // let imgSrc = './img/snow.png';
  
     let requestAnimationFrame = (function() {
       return function (callback) {
@@ -46,8 +46,6 @@ Page({
       }
     })();
     init();
- 
-    const innerAudioContext = wx.createInnerAudioContext();
     innerAudioContext.autoplay = true;
     innerAudioContext.loop = true;
     innerAudioContext.src = 'http://fs.w.kugou.com/201812231746/0d50121f1a9d975b15ba4335a7920e1b/G063/M05/0D/03/H5QEAFbNNoWAWlz8ADi_lVSx8Ls270.mp3';
@@ -65,14 +63,6 @@ Page({
       if (W < 768) {
         tickCount = 350;
       }
-      // wx.getImageInfo({
-      //   src: imgSrc,
-      //   success(res) {
-      //     snowImage = res.path;
-      //     loop();
-      //   }
-      // })
-
       loop();
     }
  
@@ -145,5 +135,11 @@ Page({
       // ctx = canvas.getContext('2d');
       ctx = wx.createCanvasContext('myCanvas');
     }
+  },
+  onShow: function () {
+    this.setData({
+      canvasHeight: H
+    })
+    innerAudioContext.play();
   }
 })

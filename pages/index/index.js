@@ -36,7 +36,8 @@ Page({
     // let canvas = null;
     let ctx = null;
   
-    let snowImage = './img/snow.png';
+    // let snowImage = './img/snow.png';
+    let snowImage = './img/white-snowflake.png';
     // let imgSrc = './img/snow.png';
  
     let requestAnimationFrame = (function() {
@@ -48,6 +49,7 @@ Page({
  
     const innerAudioContext = wx.createInnerAudioContext();
     innerAudioContext.autoplay = true;
+    innerAudioContext.loop = true;
     innerAudioContext.src = 'http://fs.w.kugou.com/201812231746/0d50121f1a9d975b15ba4335a7920e1b/G063/M05/0D/03/H5QEAFbNNoWAWlz8ADi_lVSx8Ls270.mp3';
     innerAudioContext.onPlay(() => {
       console.log('开始播放');

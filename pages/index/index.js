@@ -25,7 +25,8 @@ const innerAudioContext = wx.createInnerAudioContext();
 
 Page({
   data: {
-    canvasHeight: 0
+    canvasHeight: 0,
+    days: 0
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -48,7 +49,8 @@ Page({
     init();
     innerAudioContext.autoplay = true;
     innerAudioContext.loop = true;
-    innerAudioContext.src = 'http://fs.w.kugou.com/201812231746/0d50121f1a9d975b15ba4335a7920e1b/G063/M05/0D/03/H5QEAFbNNoWAWlz8ADi_lVSx8Ls270.mp3';
+    // innerAudioContext.src = 'http://fs.w.kugou.com/201812231746/0d50121f1a9d975b15ba4335a7920e1b/G063/M05/0D/03/H5QEAFbNNoWAWlz8ADi_lVSx8Ls270.mp3';
+    innerAudioContext.src = 'https://ip-h5-ra03-sycdn.kuwo.cn/07e74dd3ecd362a8c4435c4d7ea1419c/5c6cbc14/resource/a2/48/96/724780588.aac';
     innerAudioContext.onPlay(() => {
       console.log('开始播放');
     })
@@ -65,7 +67,7 @@ Page({
       }
       loop();
     }
- 
+
     function loop() {
       requestAnimationFrame(loop);
   
@@ -139,6 +141,12 @@ Page({
   onShow: function () {
     this.setData({
       canvasHeight: H
+    })
+     
+    var thatDay = new Date('2019/02/08');
+    var now = new Date();
+    this.setData({
+      days: Math.floor((now - thatDay)/3600/1000/24)
     })
     innerAudioContext.play();
   }

@@ -4,18 +4,18 @@
     <div>waiting for what I said</div>
     <div>for ever and nerver......</div>
     <div style="margin-bottom: 10rpx;">day-{{days}}</div>
-    <div>坚持信念</div>
-    <div>永远等待</div>
-    <div>海阔天空</div>
+    <div>......</div>
+    <div>......</div>
+    <div>......</div>
     <div>......</div>
   </view>
   <canvas style="width: 100%; height:{{canvasHeight}}px" canvas-id="myCanvas">
   </canvas>
   <view class="my-word">
-    <div>我在找那个故事里的人</div>
-    <div>守著小小的永恒</div>
-    <div>哪怕永远也叫不醒</div>
-    <div>一个装睡的人</div>
+    <div>......</div>
+    <div>......</div>
+    <div>......</div>
+    <div>......</div>
     <div>......</div>
   </view>
 </view>
